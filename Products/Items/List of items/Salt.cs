@@ -39,29 +39,8 @@
         {
             this.Name = "Salt";
             this.Weight = weight;
-            this.Price = CountPrice(weight, unitPrice);
-            this.Calories = CountCalories(weight);
-        }
-
-        /// <summary>
-        /// Count full price.
-        /// </summary>
-        /// <param name="weight">Weight of item.</param>
-        /// <param name="unitPrice">Price per gram of product.</param>
-        /// <returns>Full price.</returns>
-        protected sealed override double CountPrice(double weight, double unitPrice)
-        {
-            return weight * unitPrice;
-        }
-
-        /// <summary>
-        /// Count full calories. 
-        /// </summary>
-        /// <param name="weight">Weight of item.</param>
-        /// <returns>Full calories.</returns>
-        protected sealed override double CountCalories(double weight)
-        {
-            return weight * UnitCalories;
+            this.Price = CalculationOfCharacteristics.CountPrice(weight, unitPrice);
+            this.Calories = CalculationOfCharacteristics.CountCalories(weight, UnitCalories);
         }
 
         /// <summary>

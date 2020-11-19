@@ -67,7 +67,7 @@ namespace ReadingFromFile
                 if (IsProduct(productData[0]))
                 {
                     var listOfItems = CreateListOfItems(ref index, information);
-                    if (listOfItems != null)
+                    if (listOfItems != null && Int32.TryParse(productData[1], out var number))
                     {
                         listOfProduct.Add(CreateProduct(productData, listOfItems));
                     }
@@ -123,7 +123,7 @@ namespace ReadingFromFile
                     listOfItems.Add(CreateItem(itemData));
                     lineNumberInFile++;
                 }
-                else
+                else if(IsProduct(itemData[0]))
                 {
                     isProduct = true;
                 }

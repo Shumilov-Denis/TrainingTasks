@@ -21,17 +21,5 @@
         /// All calories of item.
         /// </summary>
         public abstract double Calories { get; }
-
-        /// <summary>
-        /// Count price.
-        /// </summary>
-        /// <returns>Price.</returns>
-        protected abstract double CountPrice(double weight, double unitPrice);
-
-        /// <summary>
-        /// Count calories.
-        /// </summary>
-        /// <returns>Calories.</returns>
-        protected abstract double CountCalories(double weight);
     }
 }
