@@ -19,9 +19,29 @@ namespace ReadingFromFile
         public string Way { get; set; }
 
         /// <summary>
+        /// Position name.
+        /// </summary>
+        private const int NamePosition = 0;
+
+        /// <summary>
+        /// Position weight.
+        /// </summary>
+        private const int Weight = 1;
+
+        /// <summary>
+        /// Position price.
+        /// </summary>
+        private const int Price = 2;
+
+        /// <summary>
+        /// Position number of products.
+        /// </summary>
+        private const int NumberPosition = 1;
+
+        /// <summary>
         /// Create new way to text file.
         /// </summary>
-        /// <param name="way"></param>
+        /// <param name="way">Way to file.</param>
         public Read(string way)
         {
             if (String.IsNullOrWhiteSpace(way))
@@ -35,7 +55,7 @@ namespace ReadingFromFile
         /// <summary>
         /// Read information from file.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Information</returns>
         private List<string> ReadInformationFromFile()
         {
             var information = new List<string>();
@@ -64,10 +84,10 @@ namespace ReadingFromFile
             for (int index = 0; index < information.Count; index++)
             {
                 string[] productData = information[index].Split(new char[] { ' ' });
-                if (IsProduct(productData[0]))
+                if (productData.Length >= 2 && IsProduct(productData[0]))
                 {
                     var listOfItems = CreateListOfItems(ref index, information);
-                    if (listOfItems != null && Int32.TryParse(productData[1], out var number))
+                    if (listOfItems != null && Int32.TryParse(productData[NumberPosition], out var number))
                     {
                         listOfProduct.Add(CreateProduct(productData, listOfItems));
                     }
@@ -87,16 +107,16 @@ namespace ReadingFromFile
         {
             Product product = null;
 
-            switch (productData[0])
+            switch (productData[NamePosition])
             {
                 case "Bread":
-                    Bread bread = new Bread(Convert.ToInt32(productData[1]), items);
+                    Bread bread = new Bread(Convert.ToInt32(productData[NumberPosition]), items);
                     product = bread; break;
                 case "Baton":
-                    Baton baton = new Baton(Convert.ToInt32(productData[1]), items);
+                    Baton baton = new Baton(Convert.ToInt32(productData[NumberPosition]), items);
                     product = baton; break;
                 case "Bun":
-                    Bun bun = new Bun(Convert.ToInt32(productData[1]), items);
+                    Bun bun = new Bun(Convert.ToInt32(productData[NumberPosition]), items);
                     product = bun; break;
             }
 
@@ -118,12 +138,12 @@ namespace ReadingFromFile
             for (int indexTwo = lineNumberInFile + 1; indexTwo < information.Count && !isProduct; indexTwo++)
             {
                 string[] itemData = information[indexTwo].Split(new char[] { ' ' });
-                if (IsItem(itemData[0]) && CheckingItemData(itemData))
+                if (IsItem(itemData[NamePosition]) && CheckingItemData(itemData))
                 {
                     listOfItems.Add(CreateItem(itemData));
                     lineNumberInFile++;
                 }
-                else if(IsProduct(itemData[0]))
+                else if(IsProduct(itemData[NamePosition]))
                 {
                     isProduct = true;
                 }
@@ -139,7 +159,7 @@ namespace ReadingFromFile
         /// <returns>True - if data is correctness.</returns>
         private bool CheckingItemData(string[] itemData)
         {
-            return Double.TryParse(itemData[1], out double weight) && Double.TryParse(itemData[2], out double price);
+            return Double.TryParse(itemData[Weight], out double weight) && Double.TryParse(itemData[Price], out double price);
         }
 
         /// <summary>
@@ -151,28 +171,28 @@ namespace ReadingFromFile
         {
             Item item = null;
 
-            switch (itemData[0])
+            switch (itemData[NamePosition])
             {
                 case "\tButter":
-                    var butter = new Butter(Convert.ToDouble(itemData[1]), Convert.ToDouble(itemData[2]));
+                    var butter = new Butter(Convert.ToDouble(itemData[Weight]), Convert.ToDouble(itemData[Price]));
                     item = butter; break;
                 case "\tEgg":
-                    var egg = new Egg(Convert.ToDouble(itemData[1]), Convert.ToDouble(itemData[2]));
+                    var egg = new Egg(Convert.ToDouble(itemData[Weight]), Convert.ToDouble(itemData[Price]));
                     item = egg; break;
                 case "\tFlour":
-                    var flour = new Flour(Convert.ToDouble(itemData[1]), Convert.ToDouble(itemData[2]));
+                    var flour = new Flour(Convert.ToDouble(itemData[Weight]), Convert.ToDouble(itemData[Price]));
                     item = flour; break;
                 case "\tSalt":
-                    var salt = new Salt(Convert.ToDouble(itemData[1]), Convert.ToDouble(itemData[2]));
+                    var salt = new Salt(Convert.ToDouble(itemData[Weight]), Convert.ToDouble(itemData[Price]));
                     item = salt; break;
                 case "\tSugar":
-                    var sugar = new Sugar(Convert.ToDouble(itemData[1]), Convert.ToDouble(itemData[2]));
+                    var sugar = new Sugar(Convert.ToDouble(itemData[Weight]), Convert.ToDouble(itemData[Price]));
                     item = sugar; break;
                 case "\tWater":
-                    var water = new Water(Convert.ToDouble(itemData[1]), Convert.ToDouble(itemData[2]));
+                    var water = new Water(Convert.ToDouble(itemData[Weight]), Convert.ToDouble(itemData[Price]));
                     item = water; break;
                 case "\tYeast":
-                    var yeast = new Yeast(Convert.ToDouble(itemData[1]), Convert.ToDouble(itemData[2]));
+                    var yeast = new Yeast(Convert.ToDouble(itemData[Weight]), Convert.ToDouble(itemData[Price]));
                     item = yeast; break;
             }
 
