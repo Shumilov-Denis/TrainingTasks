@@ -49,7 +49,10 @@ namespace WorkWithFile
             var jsonFormatter = new DataContractJsonSerializer(typeof(List<Product>));
             using (var file = new FileStream(Way, FileMode.OpenOrCreate))
             {
-                jsonFormatter.WriteObject(file, products);
+                if (file == null)
+                {
+                    jsonFormatter.WriteObject(file, products);
+                }
             }
         }
     }

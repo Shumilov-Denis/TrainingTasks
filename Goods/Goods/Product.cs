@@ -35,10 +35,5 @@ namespace Goods
         /// </summary>
         [DataMember]
         public abstract int NumberOfUnits { get; set; }
-
-        public Product()
-        {
-
-        }
     }
 }

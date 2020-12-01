@@ -1,3 +1,4 @@
+using System;
 using Goods;
 using Goods.Products;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -40,6 +41,34 @@ namespace FileTest
             Assert.IsTrue(newProducts[0].Equals(new Tv(100, 100, 2)));
             Assert.IsTrue(newProducts[1].Equals(new Phone(50, 30, 2)));
             Assert.IsTrue(newProducts[2].Equals(new Laptop(1000, 100, 2)));
+        }
+
+        /// <summary>
+        /// Test type after read file.
+        /// </summary>
+        [TestMethod]
+        public void TestTimeAfterRead()
+        {
+            WorkWithFile.File file = new WorkWithFile.File(@"D:\Goods.json");
+
+            List<Product> newProducts = file.Read();
+
+            Type[] type = new[]
+            {
+                typeof(Tv),
+                typeof(Phone),
+                typeof(Laptop)
+            };
+
+            Assert.IsTrue(newProducts[0].GetType() == type[0]);
+            Assert.IsTrue(newProducts[1].GetType() == type[1]);
+            Assert.IsTrue(newProducts[2].GetType() == type[2]);
+            Assert.IsFalse(newProducts[0].GetType() == type[1]);
+            Assert.IsFalse(newProducts[0].GetType() == type[2]);
+            Assert.IsFalse(newProducts[1].GetType() == type[0]);
+            Assert.IsFalse(newProducts[1].GetType() == type[2]);
+            Assert.IsFalse(newProducts[2].GetType() == type[0]);
+            Assert.IsFalse(newProducts[2].GetType() == type[1]);
         }
     }
 }
