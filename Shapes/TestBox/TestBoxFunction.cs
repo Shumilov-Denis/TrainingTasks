@@ -1,14 +1,13 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TaskException;
-using Shapes;
-using System.Collections.Generic;
 using Boxes;
 using Colors;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PaintingFigures;
+using Shapes;
 using Shapes.ShapesOfFigure;
 using Shapes.ShapesOfFigure.Circles;
 using Shapes.ShapesOfFigure.Rectangles;
 using Shapes.ShapesOfFigure.Triangles;
+using System.Collections.Generic;
 
 namespace TestBox
 {
@@ -86,7 +85,7 @@ namespace TestBox
 
             Assert.AreEqual(1, newBox.Length);
 
-            newBox.AddFigure(new PaperRectangle(10,10));
+            newBox.AddFigure(new PaperRectangle(10, 10));
 
             Assert.AreEqual(2, newBox.Length);
         }
@@ -126,9 +125,9 @@ namespace TestBox
         {
             Box box = new Box();
             box.ReadFromFileWithStream(@"D:\TestBoxXmlStream.xml");
-            box.ReplacementByNumber(new PaperRectangle(10,10), 1);
+            box.ReplacementByNumber(new PaperRectangle(10, 10), 1);
 
-            Assert.IsTrue(box.Figures[0].Equals(new PaperRectangle(10,10)));
+            Assert.IsTrue(box.Figures[0].Equals(new PaperRectangle(10, 10)));
         }
 
         /// <summary>
@@ -248,7 +247,7 @@ namespace TestBox
 
             List<Figure> filmFigures = box.GetAllFilmFigures();
 
-            Assert.AreEqual(8,filmFigures.Count);
+            Assert.AreEqual(8, filmFigures.Count);
             Assert.AreEqual(1, box.Length);
         }
 
@@ -262,7 +261,7 @@ namespace TestBox
 
             PlasticCircle circle = new PlasticCircle(1);
             PlasticTriangle triangle = new PlasticTriangle(3);
-            PlasticRectangle rectangle = new PlasticRectangle(10,10);
+            PlasticRectangle rectangle = new PlasticRectangle(10, 10);
 
             circle.PaintingFigure(Color.Orange);
             rectangle.PaintingFigure(Color.Red);
@@ -273,7 +272,7 @@ namespace TestBox
 
             List<Figure> figures = box.GetAllPlasticFiguresHasNotBeenPainting();
 
-            Assert.AreEqual(1,figures.Count);
+            Assert.AreEqual(1, figures.Count);
             Assert.AreEqual(2, box.Length);
         }
     }

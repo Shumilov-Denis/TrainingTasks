@@ -1,7 +1,6 @@
 ﻿using Shapes;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Boxes
 {
@@ -20,7 +19,7 @@ namespace Boxes
         {
             List<Figure> materialFigure = new List<Figure>();
 
-            for(int index = 0; index < figures.Count; index++)
+            for (int index = 0; index < figures.Count; index++)
             {
                 if (materialMethod(figures[index]))
                 {
@@ -31,6 +30,6 @@ namespace Boxes
             }
 
             return materialFigure;
-        } 
+        }
     }
 }

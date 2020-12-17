@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.VisualBasic;
-using Shapes;
-using Shapes.ShapesOfFigure;
-using TaskException;
+﻿using Shapes;
 using Shapes.Cutting;
+using Shapes.ShapesOfFigure;
+using System.Collections.Generic;
+using TaskException;
 using WorkWithFile.WriteOrReadFile;
 
 namespace Boxes
@@ -91,7 +89,7 @@ namespace Boxes
         {
             bool noFigure = true;
 
-            for(int index = 0; index < Figures.Count && noFigure; index++)
+            for (int index = 0; index < Figures.Count && noFigure; index++)
             {
                 if (figureToChecking.Equals(Figures[index]))
                 {
@@ -271,7 +269,7 @@ namespace Boxes
             {
                 case SelectionOfShapes.All: newList = Figures; Figures.RemoveRange(0, Figures.Count); break;
                 case SelectionOfShapes.Film: newList = Figures.FoundFigure(CheckMaterial.IsFilmFigure); break;
-                case SelectionOfShapes.Paper: newList = Figures.FoundFigure(CheckMaterial.IsPaperFigure);  break;
+                case SelectionOfShapes.Paper: newList = Figures.FoundFigure(CheckMaterial.IsPaperFigure); break;
                 case SelectionOfShapes.Plastic: newList = Figures.FoundFigure(CheckMaterial.IsPaperFigure); break;
             }
 
@@ -319,9 +317,9 @@ namespace Boxes
         {
             bool figureWas = false;
 
-            for(int indexFirst = 0; indexFirst < figures.Count - 1; indexFirst++)
+            for (int indexFirst = 0; indexFirst < figures.Count - 1; indexFirst++)
             {
-                for(int indexSecond = indexFirst + 1; indexSecond < figures.Count; indexSecond++)
+                for (int indexSecond = indexFirst + 1; indexSecond < figures.Count; indexSecond++)
                 {
                     if (figures[indexFirst].Equals(figures[indexSecond]))
                     {
@@ -342,7 +340,7 @@ namespace Boxes
             FileWorkWithStream file = new FileWorkWithStream(wayToFile);
             List<Figure> figures = file.Read();
 
-            if(figures.Count > 20 || CheckReadingFigures(figures))
+            if (figures.Count > 20 || CheckReadingFigures(figures))
             {
                 throw new OverflowBoxException("The shape could not be read because a condition was violated: the number of shapes exceeded 20, or the shapes are being repeated.");
             }
