@@ -8,7 +8,7 @@ namespace CRUD
     /// <summary>
     /// Student CRUD.
     /// </summary>
-    public class StudentCRUD : ICRUD<Student>
+    internal class StudentCRUD : ICRUD<Student>
     {
         /// <summary>
         /// Datebase.
@@ -30,7 +30,6 @@ namespace CRUD
                         .AddParameter("@StudentGroup", deleteData.StudentGroup)
                         .ExecuteNonQuery("delete from Students where Name=@Name");
             }
-            //,Surname=@Surname,DateBirth=@DateBirth,Gender=@Gender,StudentGroup=@StudentGroup
         }
 
         /// <summary>
@@ -48,12 +47,12 @@ namespace CRUD
                             .AddParameter("@DateBirth", insertData.DateBirth)
                             .AddParameter("@Gender", insertData.Gender)
                             .AddParameter("@StudentGroup", insertData.StudentGroup)
-                            .ExecuteNonQuery("insert into Students values(@Name,@Surname,@DateBirth,@Gender,@StudentGroup)");
+                            .ExecuteNonQuery("insert into Students values (@Name,@Surname,@DateBirth,@Gender,@StudentGroup)");
                 }
             }
-            catch
+            catch(Exception ex)
             {
-                Console.WriteLine("Unable to add new data. The index group may not exist");
+                Console.WriteLine("Unable to add new data. The index group may not exist. " + ex.ToString());
             }
         }
 

@@ -8,7 +8,7 @@ namespace CRUD
     /// <summary>
     /// Exam CRUD.
     /// </summary>
-    public class ExamCRUD : ICRUD<Exam>
+    internal class ExamCRUD : ICRUD<Exam>
     {
         /// <summary>
         /// Datebase.

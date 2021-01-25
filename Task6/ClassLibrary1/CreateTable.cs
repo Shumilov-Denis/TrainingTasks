@@ -2,6 +2,7 @@
 using Excels.SortFunction;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using University;
 
 namespace Excels
@@ -82,7 +83,7 @@ namespace Excels
                         excel.Set(1, "C", "Минимальная оценка");
                         excel.Set(1, "D", "Максимальная оценка");
 
-                        List<Group> groups = new GroupCRUD().Select();
+                        List<Group> groups = new CRUDFactory().GroupFactory().Select();
                         int i = 2;
 
                         foreach (var group in groups)
@@ -212,6 +213,8 @@ namespace Excels
                     studentsForExpalled.Add(student);
                 }
             }
+
+            students.Distinct();
             return studentsForExpalled;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace University
 {
@@ -52,6 +53,30 @@ namespace University
             this.Date = date;
             this.Groups = group;
             this.Session = session;
+        }
+
+        /// <summary>
+        /// Get id.
+        /// </summary>
+        /// <param name="list">List with exams.</param>
+        /// <returns>Id.</returns>
+        public int GetId(List<Exam> list)
+        {
+            int id = -1;
+
+            foreach (var exam in list)
+            {
+                if (this.Title == exam.Title &&
+                    this.Date == exam.Date &&
+                    this.Session == exam.Session &&
+                    this.Groups == exam.Groups)
+                {
+                    id = exam.Id;
+                    break;
+                }
+            }
+
+            return id;
         }
     }
 }

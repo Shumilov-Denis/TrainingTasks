@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace University
 {
@@ -66,6 +67,31 @@ namespace University
             this.DateBirth = dateBirth;
             this.Gender = gender;
             this.StudentGroup = group;
+        }
+
+        /// <summary>
+        /// Get id.
+        /// </summary>
+        /// <param name="list">List with student.</param>
+        /// <returns>Id.</returns>
+        public int GetId(List<Student> list)
+        {
+            int id = -1;
+
+            foreach (var student in list)
+            {
+                if (this.Name == student.Name &&
+                    this.Surname == student.Surname &&
+                    this.DateBirth == student.DateBirth && 
+                    this.Gender == student.Gender &&
+                    this.StudentGroup == student.StudentGroup)
+                {
+                    id = student.Id;
+                    break;
+                }
+            }
+
+            return id;
         }
     }
 }

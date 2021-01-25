@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace University
 {
@@ -36,6 +37,27 @@ namespace University
             }
 
             this.GroupName = groupName;
+        }
+
+        /// <summary>
+        /// Get id.
+        /// </summary>
+        /// <param name="list">List with group.</param>
+        /// <returns>Id.</returns>
+        public int GetId(List<Group> list)
+        {
+            int id = -1;
+
+            foreach (var group in list)
+            {
+                if (this.GroupName == group.GroupName)
+                {
+                    id = group.Id;
+                    break;
+                }
+            }
+
+            return id;
         }
     }
 }

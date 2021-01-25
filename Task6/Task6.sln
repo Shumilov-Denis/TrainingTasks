@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases", "Databases\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD", "CRUD\CRUD.csproj", "{D767ABE8-F497-42F0-9913-A318982AF78C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTests", "TaskTests\TaskTests.csproj", "{3DD6A061-DDBE-42C7-B0A3-C48E1F876BCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D767ABE8-F497-42F0-9913-A318982AF78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D767ABE8-F497-42F0-9913-A318982AF78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D767ABE8-F497-42F0-9913-A318982AF78C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DD6A061-DDBE-42C7-B0A3-C48E1F876BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD6A061-DDBE-42C7-B0A3-C48E1F876BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD6A061-DDBE-42C7-B0A3-C48E1F876BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD6A061-DDBE-42C7-B0A3-C48E1F876BCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

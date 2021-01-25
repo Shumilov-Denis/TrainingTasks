@@ -7,7 +7,7 @@ namespace CRUD
     /// <summary>
     /// Session CRUD.
     /// </summary>
-    public class SessionCRUD : ICRUD<Session>
+    internal class SessionCRUD : ICRUD<Session>
     {
         /// <summary>
         /// Datebase.

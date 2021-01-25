@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TaskExceptions;
 
 namespace University
@@ -42,6 +43,28 @@ namespace University
 
             this.DateStart = startDate;
             this.DateFinish = endDate;
+        }
+
+        /// <summary>
+        /// Get id.
+        /// </summary>
+        /// <param name="list">List with sessions.</param>
+        /// <returns>Id.</returns>
+        public int GetId(List<Session> list)
+        {
+            int id = -1;
+
+            foreach (var session in list)
+            {
+                if (this.DateStart == session.DateStart &&
+                    this.DateFinish == session.DateFinish)
+                {
+                    id = session.Id;
+                    break;
+                }
+            }
+
+            return id;
         }
     }
 }

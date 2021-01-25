@@ -8,7 +8,7 @@ namespace CRUD
     /// <summary>
     /// Result CRUD.
     /// </summary>
-    public class ResultCRUD : ICRUD<Result>
+    internal class ResultCRUD : ICRUD<Result>
     {
         /// <summary>
         /// Datebase.

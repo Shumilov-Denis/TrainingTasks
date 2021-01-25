@@ -7,7 +7,7 @@ namespace CRUD
     /// <summary>
     /// CRUD for groups table.
     /// </summary>
-    public class GroupCRUD : ICRUD<Group>
+    internal class GroupCRUD : ICRUD<Group>
     {
         /// <summary>
         /// Datebase.

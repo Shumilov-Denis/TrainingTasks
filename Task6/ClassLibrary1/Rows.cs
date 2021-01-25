@@ -93,11 +93,11 @@ namespace Excels
 
             try
             {
-                List<Student> students = new StudentCRUD().Select();
-                List<Group> groups = new GroupCRUD().Select();
-                List<Exam> exams = new ExamCRUD().Select();
-                List<Session> sessions = new SessionCRUD().Select();
-                List<Result> results = new ResultCRUD().Select();
+                List<Student> students = new CRUDFactory().StudentFactory().Select();
+                List<Group> groups = new CRUDFactory().GroupFactory().Select();
+                List<Exam> exams = new CRUDFactory().ExamFactory().Select();
+                List<Session> sessions = new CRUDFactory().SessionFactory().Select();
+                List<Result> results = new CRUDFactory().ResultFactory().Select();
 
                 foreach (var result in results)
                 {

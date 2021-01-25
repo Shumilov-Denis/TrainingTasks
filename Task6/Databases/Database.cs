@@ -30,7 +30,8 @@ namespace Databases
         {
             if (_database == null)
             {
-                _database = new Database(connectionString);
+                ConnectionString = connectionString;
+                _database = new Database(ConnectionString);
             }
             return _database;
         }
@@ -38,12 +39,12 @@ namespace Databases
         /// <summary>
         /// Connection string.
         /// </summary>
-        public string ConnectionString { get; }
+        public static string ConnectionString;
 
         /// <summary>
         /// Connection.
         /// </summary>
-        public SqlConnection Connection { get; }
+        public SqlConnection Connection { get; set; }
 
         /// <summary>
         /// CMD.
@@ -56,7 +57,6 @@ namespace Databases
         /// <param name="connectionString">Connection string.</param>
         private Database(string connectionString)
         {
-            this.ConnectionString = connectionString;
             this.Connection = new SqlConnection(connectionString);
             this.CMD = Connection.CreateCommand();
         }
@@ -88,9 +88,11 @@ namespace Databases
         {
             using (Connection)
             {
+                Connection.ConnectionString = ConnectionString;
                 CMD.CommandText = query;
                 Connection.Open();
                 CMD.ExecuteNonQuery();
+                CMD.Parameters.Clear();
             }
         }
 
